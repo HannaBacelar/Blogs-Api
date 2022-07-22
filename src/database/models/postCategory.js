@@ -4,13 +4,11 @@
     const PostCategory = sequelize.define('PostCategory', {
       postId: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
         type: DataTypes.INTEGER
       },
       categoryId: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
         type: DataTypes.INTEGER
       },
