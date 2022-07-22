@@ -10,14 +10,22 @@
       },
       title: DataTypes.STRING,
       content: DataTypes.STRING,
-      userId: DataTypes.DATE,
-      published: DataTypes.DATE,
-      updated: DataTypes.DATE     
-    }, {
-      underscored: true,
-      timestamps: false,
-      tableName: 'BlogPosts'
-    });
+      userId: {
+        foreignKey: true,
+        type: DataTypes.INTEGER,
+      },
+      published: {
+        type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW,
+      },
+      updated: {
+        type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW,
+      }
+    }, 
+    {
+    timestamps: false,
+    })
     //belongsTo -> pertence a um
     BlogPost.associate = (models) => {
         BlogPost.belongsTo(models.User, {

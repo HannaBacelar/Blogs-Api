@@ -16,17 +16,15 @@
       },
         
     }, {
-      underscored: true,
       timestamps: false,
-      tableName: 'PostCategories'
     });
     // belongsToMany -> pertence a varios
     PostCategory.associate = (models) => {
         models.BlogPost.belongsToMany(models.Category, {
           as: 'postsCategories',
           through: PostCategory,
-          foreignKey: 'categoryId',
-          otherKey: 'postId',
+          foreignKey: 'postId',
+          otherKey: 'categoryId',
         });
         models.Category.belongsToMany(models.BlogPost, {
           as: 'categories',
@@ -38,3 +36,11 @@
     return PostCategory;
   };
   module.exports =  createUserModel;
+
+  //ModelDeAssociação.associate = (models) => {
+//   models.ModelFonte.belongsToMany(models.ModelAlvo, {
+//     as: 'apelido_da_associação',
+//     through: ModelDeAssociação,
+//     foreignKey: 'id_da_fonte_na_tabela_da_associação',
+//     otherKey: 'id_do_alvo_na_tabela_da_associação',
+//   });

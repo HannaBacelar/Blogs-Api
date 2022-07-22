@@ -13,9 +13,7 @@
       password: DataTypes.STRING,
       image: DataTypes.STRING,
     }, {
-      underscored: true,
       timestamps: false,
-      tableName: 'Users'
     });
 // hasMany -> possui varios 
    User.associate = (models) => {
