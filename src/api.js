@@ -10,9 +10,8 @@ const userController = require('./controllers/user.controller');
 app.use(express.json());
 app.post('/login', loginController.userFind);
 app.post('/user', userController.createUser);
-app.use(tokenValidate);
-app.get('/user', userController.getUser);
-app.get('/user/:id', userController.getUserId);
+app.get('/user', tokenValidate, userController.getUser);
+app.get('/user/:id', tokenValidate, userController.getUserId);
 app.use(middlewareError);
 // ...
 
