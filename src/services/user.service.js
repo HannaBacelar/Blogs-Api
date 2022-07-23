@@ -13,6 +13,17 @@ error: {
 code: 'alreadyExists', message: 'User already registered' },
     }; 
 }
-    };
+};
 
-module.exports = { createUser };
+const getUser = async () => {
+        try {
+const result = await User.findAll({ 
+    attributes: { exclude: ['password'] },
+    raw: true, // transforma em json
+});
+return result;
+} catch (error) {
+    return undefined;
+}
+};
+module.exports = { createUser, getUser };

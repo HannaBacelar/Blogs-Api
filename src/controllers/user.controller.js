@@ -26,4 +26,12 @@ const token = JWT.sign({ data: result }, jwtSecret, config);
 return res.status(201).json({ token });
 });
 
-module.exports = { createUser };
+const getUser = rescue(async (req, res, next) => {
+const result = await userService.getUser();
+if (!result) {
+    return next(result.error);
+}
+ return res.status(200).json(result);
+});
+
+module.exports = { createUser, getUser };
