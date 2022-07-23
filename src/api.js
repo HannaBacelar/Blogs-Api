@@ -3,10 +3,12 @@ const express = require('express');
 // ...
 const app = express();
 const middlewareError = require('./middleware/error.middleware');
-const logincontroller = require('./controllers/login.controller');
+const loginController = require('./controllers/login.controller');
+const userController = require('./controllers/user.controller');
 
 app.use(express.json());
-app.post('/login', logincontroller.userFind);
+app.post('/login', loginController.userFind);
+app.post('/user', userController.createUser);
 app.use(middlewareError);
 // ...
 
