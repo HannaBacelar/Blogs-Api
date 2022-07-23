@@ -37,7 +37,7 @@ if (!result) {
 const getUserId = rescue(async (req, res, next) => {
     const { id } = req.params;
     const result = await userService.getUserId(id);
-    if (!result) {
+    if (result.error) {
         return next(result.error);
     }
      return res.status(200).json(result);
