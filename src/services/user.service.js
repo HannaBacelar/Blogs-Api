@@ -26,4 +26,24 @@ return result;
     return undefined;
 }
 };
-module.exports = { createUser, getUser };
+const getUserId = async (id) => {
+    try {
+const result = await User.findByPk(id, { 
+attributes: { exclude: ['password'] },
+raw: true, // transforma em json
+});
+if (!result) {
+    return {
+        error: {
+        code: 'notFound', message: 'User does not exist' },
+         };
+}
+return result;
+} catch (error) {
+    return {
+ error: {
+ code: 'notFound', message: 'User does not exist' },
+  };
+}
+};
+module.exports = { createUser, getUser, getUserId };

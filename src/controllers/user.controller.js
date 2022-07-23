@@ -34,4 +34,13 @@ if (!result) {
  return res.status(200).json(result);
 });
 
-module.exports = { createUser, getUser };
+const getUserId = rescue(async (req, res, next) => {
+    const { id } = req.params;
+    const result = await userService.getUserId(id);
+    if (!result) {
+        return next(result.error);
+    }
+     return res.status(200).json(result);
+    });
+
+module.exports = { createUser, getUser, getUserId };

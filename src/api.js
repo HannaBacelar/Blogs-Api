@@ -12,6 +12,7 @@ app.post('/login', loginController.userFind);
 app.post('/user', userController.createUser);
 app.use(tokenValidate);
 app.get('/user', userController.getUser);
+app.get('/user/:id', userController.getUserId);
 app.use(middlewareError);
 // ...
 
