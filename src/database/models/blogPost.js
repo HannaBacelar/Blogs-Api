@@ -29,9 +29,10 @@
     //belongsTo -> pertence a um
     BlogPost.associate = (models) => {
         BlogPost.belongsTo(models.User, {
-            foreignKey: 'userId', as: "users"
+            foreignKey: 'userId', as: 'user'
         } );
     }
     return BlogPost;
   };
+  
   module.exports =  createUserModel;

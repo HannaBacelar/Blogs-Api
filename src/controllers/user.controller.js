@@ -7,7 +7,7 @@ const userService = require('../services/user.service');
 const jwtSecret = process.env.JWT_SECRET;
 
 const config = {
-expiresIn: '15m',
+expiresIn: '15d',
 algorithm: 'HS256',
 };
 

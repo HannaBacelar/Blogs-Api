@@ -12,6 +12,7 @@
     }, {
       timestamps: false,
     })
+    
     return Category;
   };
   module.exports =  createUserModel;
